@@ -89,15 +89,14 @@ async def main():
                 break
 
             elif board[1][1] != "":
-
                 # Checks for the "red" case
                 for i in range(3):
                     for j in range(2):
                         if (
-                            board[i][j] == board[i][j + 1]
-                            and board[i][j] != ""
-                            and board[i][j] != temp_mark
-                            and not is_chosen
+                                board[i][j] == board[i][j + 1]
+                                and board[i][j] != ""
+                                and board[i][j] != temp_mark
+                                and not is_chosen
                         ):
                             if j == 0 and board[i][j + 2] == "":
                                 buttons[i * 3 + 2].mark = mark
@@ -114,10 +113,10 @@ async def main():
                 for i in range(2):
                     for j in range(3):
                         if (
-                            board[i][j] == board[i + 1][j]
-                            and board[i][j] != ""
-                            and board[i][j] != temp_mark
-                            and not is_chosen
+                                board[i][j] == board[i + 1][j]
+                                and board[i][j] != ""
+                                and board[i][j] != temp_mark
+                                and not is_chosen
                         ):
                             if i == 0 and board[i + 2][j] == "":
                                 buttons[(i + 2) * 3 + j].mark = mark
@@ -135,44 +134,95 @@ async def main():
 
                 # Checks for the "black" case
                 if (
-                    board[0][0] == board[1][1]
-                    and board[1][1] != ""
-                    and board[1][1] != temp_mark
-                    and board[2][2] == ""
+                        board[0][0] == board[1][1]
+                        and board[1][1] != ""
+                        and board[1][1] != temp_mark
+                        and board[2][2] == ""
                 ):
                     buttons[8].mark = mark
                     board[2][2] = "O"
                     is_chosen = True
                     break
-
                 elif (
-                    board[0][2] == board[1][1]
-                    and board[1][1] != ""
-                    and board[1][1] != temp_mark
-                    and board[2][0] == ""
+                        board[0][2] == board[1][1]
+                        and board[1][1] != ""
+                        and board[1][1] != temp_mark
+                        and board[2][0] == ""
                 ):
                     buttons[6].mark = mark
                     board[2][0] = "O"
                     is_chosen = True
                     break
                 elif (
-                    board[2][0] == board[1][1]
-                    and board[1][1] != ""
-                    and board[1][1] != temp_mark
-                    and board[0][2] == ""
+                        board[2][0] == board[1][1]
+                        and board[1][1] != ""
+                        and board[1][1] != temp_mark
+                        and board[0][2] == ""
                 ):
                     buttons[2].mark = mark
                     board[0][2] = "O"
                     is_chosen = True
                     break
                 elif (
-                    board[2][2] == board[1][1]
-                    and board[1][1] != ""
-                    and board[1][1] != temp_mark
-                    and board[0][0] == ""
+                        board[2][2] == board[1][1]
+                        and board[1][1] != ""
+                        and board[1][1] != temp_mark
+                        and board[0][0] == ""
                 ):
                     buttons[0].mark = mark
                     board[0][0] = "O"
+                    is_chosen = True
+                    break
+
+                # Additional conditions
+                elif (
+                        board[0][0] == board[0][2]
+                        and board[0][0] != ""
+                        and board[0][0] != temp_mark
+                        and board[0][1] == ""
+                ):
+                    buttons[1].mark = mark
+                    board[0][1] = "O"
+                    is_chosen = True
+                    break
+                elif (
+                        board[0][0] == board[2][0]
+                        and board[0][0] != ""
+                        and board[0][0] != temp_mark
+                        and board[1][0] == ""
+                ):
+                    buttons[3].mark = mark
+                    board[1][0] = "O"
+                    is_chosen = True
+                    break
+                elif (
+                        board[2][2] == board[0][2]
+                        and board[2][2] != ""
+                        and board[2][2] != temp_mark
+                        and board[1][2] == ""
+                ):
+                    buttons[7].mark = mark
+                    board[1][2] = "O"
+                    is_chosen = True
+                    break
+                elif (
+                        board[2][2] == board[2][0]
+                        and board[2][2] != ""
+                        and board[2][2] != temp_mark
+                        and board[2][1] == ""
+                ):
+                    buttons[7].mark = mark
+                    board[2][1] = "O"
+                    is_chosen = True
+                    break
+                elif (
+                        (board[0][0] == board[2][2] or board[2][0] == board[0][2])
+                        and board[0][0] != ""
+                        and board[0][0] != temp_mark
+                        and board[1][1] == ""
+                ):
+                    buttons[4].mark = mark
+                    board[1][1] = "O"
                     is_chosen = True
                     break
 
