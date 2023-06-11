@@ -201,7 +201,7 @@ async def main():
                         and board[2][2] != temp_mark
                         and board[1][2] == ""
                 ):
-                    buttons[7].mark = mark
+                    buttons[5].mark = mark
                     board[1][2] = "O"
                     is_chosen = True
                     break
